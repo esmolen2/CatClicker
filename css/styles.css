@@ -14,6 +14,7 @@ body {
 	font-family: "Alegreya", serif;
 	background-color: #f4e0a3;
 	text-align: center;
+	color: #554a4e;
 }
 
 h1 {
@@ -24,16 +25,31 @@ h1 {
 }
 
 p {
-	color: #554a4e;
 	padding: 0px;
 	margin: 0px;
 }
 
+.cats-container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+}
+
+.cat {
+	width: 300px;
+	padding: 20px;
+}
+
 h2 {
-	color: #554a4e;
 	font-size: 32px;
 	padding: 0px;
-	margin: 15px 0px;
+	margin: 0px;
+}
+
+h3 {
+	padding: 0px;
+	margin: -10px 0px 5px;
 }
 
 .clicks {
@@ -42,8 +58,8 @@ h2 {
 	margin: 0px 5px;
 }
 
-.cat-picture img {
-	width: 400px;
+.cat-picture {
+	width: 100%;
 	cursor: pointer;
 	box-shadow: 6px 6px 20px -6px rgba(0,0,0,0.56);
 }
