@@ -29,7 +29,7 @@ p {
 	margin: 0px;
 }
 
-.cats-container {
+#cats-container {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
