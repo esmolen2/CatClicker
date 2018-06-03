@@ -1,5 +1,7 @@
 // Create variable for where the cat profiles will appear
 const catsContainer = document.getElementById('cats-container');
+const catsList = document.getElementById('cats-list').querySelector('ul');
+const catDisplay = [];
 
 class Cat {
 	constructor(name, image) {
@@ -35,6 +37,12 @@ class Cat {
 
 		// Add Cat Profile to Cats Container in DOM
 		catsContainer.appendChild(this.catProfile);
+
+		// Create cat list item for sidebar
+		this.catListItem = document.createElement('li');
+		this.catListItem.innerHTML = this.name;
+		catsList.appendChild(this.catListItem);
+
 	}
 
 	// Count the cats meows when clicked
@@ -42,6 +50,23 @@ class Cat {
 		this.meowsCount += 1;
 		this.catClicks.innerHTML = this.meowsCount;
 	};
+
+	displayCat() {
+		this.catProfile.classList.add('show-cat');
+	}
+
+	hideCat() {
+		this.catProfile.classList.remove('show-cat');
+	}
+
+	addToCatDisplayArray () {
+		catDisplay.push(this);
+	}
+
+	removeFromCatDisplayArray () {
+		catDisplay.splice(0, 1);
+	}
+
 }
 
 // Cats object where we can add cats info that will be used in the loop below to create cats
@@ -79,7 +104,7 @@ function getNestedValue(obj, key) {
     }, obj);
 }
 
-// Loop through the catsInfo object and instantiate the cats and add event listeners to each
+// Loop through the catsInfo object, instantiate the cats and add to list, and add event listeners to profile to count clicks and to list to display cat
 for (var cat in catsInfo) {
 	if (catsInfo.hasOwnProperty(cat)) {
 		const nameProp = cat + '.name';
@@ -90,6 +115,17 @@ for (var cat in catsInfo) {
 		const newCat = new Cat(catName, catImage);
 		newCat.catImage.addEventListener('click', function() {
 			newCat.addMeow();
+		});
+		newCat.catListItem.addEventListener('click', function() {
+			if (catDisplay < 1) {
+				newCat.addToCatDisplayArray();
+				newCat.displayCat();
+			}	else if (newCat !== catDisplay[0]) {
+				catDisplay[0].hideCat();
+				catDisplay[0].removeFromCatDisplayArray();
+				newCat.addToCatDisplayArray();
+				newCat.displayCat();
+			}
 		});
 	}
 }
