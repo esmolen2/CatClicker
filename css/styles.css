@@ -29,6 +29,41 @@ p {
 	margin: 0px;
 }
 
+#cats-list {
+	width: 100px;
+	background-color: #d94748;
+	padding: 0px;
+	font-size: 18px;
+	position: absolute;
+	top: 125px;
+	left: -80px;
+	transition-duration: 1s;
+	transition-delay: 0.25s;
+}
+
+#cats-list:hover {
+	transform: translateX(80px);
+	transition-duration: 1s;
+	transition-delay: 0s;
+}
+
+#cats-list ul {
+	list-style-type: none;
+	text-align: left;
+	margin: 0px;
+	padding: 5px 5px 5px 15px;
+}
+
+#cats-list li {
+	line-height: 1.3em;
+	color: #f4e0a3;
+}
+
+#cats-list li:hover {
+	color: #554a4e;
+	cursor: pointer;
+}
+
 #cats-container {
 	display: flex;
 	justify-content: center;
@@ -50,6 +85,7 @@ h2 {
 h3 {
 	padding: 0px;
 	margin: -10px 0px 5px;
+	font-size: 18px;
 }
 
 .clicks {
