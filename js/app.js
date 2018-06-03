@@ -44,15 +44,52 @@ class Cat {
 	};
 }
 
-// Create cats and count the clicks on their pictures
-const terrance = new Cat('Terrance', 'img/YawningKitten.jpg');
-terrance.catImage.addEventListener('click', function() {
-		terrance.addMeow();
-	}
-);
+// Cats object where we can add cats info that will be used in the loop below to create cats
+const catsInfo = {
+	'Terrance': {
+		'name': 'Terrance',
+		'image': 'img/YawningKitten.jpg'
+	},
 
-const bisquick = new Cat('Bisquick', 'img/SurprisedCat.jpg');
-bisquick.catImage.addEventListener('click', function() {
-		bisquick.addMeow();
+	'Bisquick': {
+		'name': 'Bisquick',
+		'image': 'img/SurprisedCat.jpg'
+	},
+
+	'Georgie': {
+		'name': 'Georgie',
+		'image': 'img/CuriousCat.jpeg'
+	},
+
+	'Raul': {
+		'name': 'Raul',
+		'image': 'img/FeistyCat.jpg'
+	},
+
+	'Bernard': {
+		'name': 'Bernard',
+		'image': 'img/SleepyCat.jpeg'
 	}
-);
+};
+
+// Function used to parse the value of a cat property in the catsInfo object using a string
+function getNestedValue(obj, key) {
+    return key.split(".").reduce(function(result, key) {
+       return result[key]
+    }, obj);
+}
+
+// Loop through the catsInfo object and instantiate the cats and add event listeners to each
+for (var cat in catsInfo) {
+	if (catsInfo.hasOwnProperty(cat)) {
+		const nameProp = cat + '.name';
+		const catName = getNestedValue(catsInfo, nameProp);
+		const imageProp = cat + '.image';
+		const catImage = getNestedValue(catsInfo, imageProp);
+
+		const newCat = new Cat(catName, catImage);
+		newCat.catImage.addEventListener('click', function() {
+			newCat.addMeow();
+		});
+	}
+}
