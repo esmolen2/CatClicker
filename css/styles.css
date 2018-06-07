@@ -74,12 +74,11 @@ p {
 .cat {
 	width: 300px;
 	padding: 20px;
-	display: none;
 }
 
-.show-cat {
+/* .show-cat {
 	display: block;
-}
+} */
 
 h2 {
 	font-size: 32px;
