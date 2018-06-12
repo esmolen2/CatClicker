@@ -77,6 +77,24 @@ const controller = {
 	hideAdminDisplay: function() {
 		model.adminDisplay = false;
 		adminView.render();
+	},
+
+	updateCatInfo: function(name, url, meows) {
+		if(name !== '') {
+			model.currentCat.name = name;
+		};
+
+		if(url !== '') {
+			model.currentCat.image = url;
+		};
+
+		if(meows !== '') {
+			const meowsInteger = parseInt(meows, 10);
+			model.currentCat.meowsCount = meowsInteger;
+		};
+
+		catProfileView.render();
+		catListView.render();
 	}
 };
 
@@ -185,6 +203,12 @@ const adminView = {
 
 		// Hide admin panel when cancel button is clicked
 		this.cancelButton.addEventListener('click', function() {
+			controller.hideAdminDisplay();
+		});
+
+		// Save and update cat info when save button is clicked
+		this.saveButton.addEventListener('click', function() {
+			controller.updateCatInfo(adminView.nameInput.value, adminView.urlInput.value, adminView.meowsInput.value);
 			controller.hideAdminDisplay();
 		});
 
